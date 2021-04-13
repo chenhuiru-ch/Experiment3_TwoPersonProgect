@@ -1,8 +1,8 @@
-package Genetic_Alorithm;
+package Yi_Chuan;
 
 import java.util.Random;
 
-//æŸ“è‰²ä½“ç±»
+//È¾É«ÌåÀà
 public class Chromosome {
     public boolean[] gene;
     private int fitness;
@@ -16,7 +16,7 @@ public class Chromosome {
         this.fitness = fitness;
     }
     /*
-    æ„é€ æŸ“è‰²ä½“
+    ¹¹ÔìÈ¾É«Ìå
      */
     public Chromosome(int n){
         if (n<0){
@@ -40,7 +40,7 @@ public class Chromosome {
     }
 
     /*
-    æŸ“è‰²ä½“å˜å¼‚
+    È¾É«Ìå±äÒì
      */
 
     public void mutation(int size,double rate){

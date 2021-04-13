@@ -1,30 +1,31 @@
-package Genetic_Alorithm;
+package Yi_Chuan;
 
 import java.util.*;
 
-//é—ä¼ ç®—æ³•
+//ÒÅ´«Ëã·¨
 public class GeneticAlgorith {
+	private static final Chromosome Exception = null;
 	long timeStart = System.currentTimeMillis();
-    public List<Chromosome> population=new ArrayList<Chromosome>();//å­˜æ”¾æ‰€æœ‰çš„ç§ç¾¤åŸºå› 
-    private int popSize; //ç§ç¾¤è§„æ¨¡N
-    private int chromoLength;//æ¯æ¡æŸ“è‰²ä½“æ•°ç›®mï¼›
-    private double mutationRate=0.01;//åŸºå› çªå˜æ¦‚ç‡pm
-    private  double crossoverRate=0.6;//äº¤å‰æ¦‚ç‡pc
+    public List<Chromosome> population=new ArrayList<Chromosome>();//´æ·ÅËùÓĞµÄÖÖÈº»ùÒò
+    private int popSize; //ÖÖÈº¹æÄ£N
+    private int chromoLength;//Ã¿ÌõÈ¾É«ÌåÊıÄ¿m£»
+    private double mutationRate=0.01;//»ùÒòÍ»±ä¸ÅÂÊpm
+    private  double crossoverRate=0.6;//½»²æ¸ÅÂÊpc
     private int bagMax=1000;
 
-    private int generation;//ç§ç¾¤ä»£æ•°t
-    private int iterNum=10000;//æœ€å¤§è¿­ä»£æ¬¡æ•°
-   // private int stepmax=3;//æœ€é•¿æ­¥é•¿
+    private int generation;//ÖÖÈº´úÊıt
+    private int iterNum=10000;//×î´óµü´ú´ÎÊı
+   // private int stepmax=3;//×î³¤²½³¤
 
     private int [] charge={408,921,1329,11,998,1009,104,839,943,299,374,673,703,954,1657,425,950,1375,430,541,971,332,483,815,654,706,1360,956,992,1948};
     private int [] weight={508,1021,1321,111,1098,1196,204,939,1107,399,474,719,803,1054,1781,525,1050,1362,530,641,903,432,583,894,754,806,1241,1056,1092,1545};
     private double[]  density=new double[50];
 
     private Chromosome nowGenome;
-    private Chromosome bestFit; //æœ€å¥½é€‚åº”åº¦å¯¹åº”çš„æŸ“è‰²ä½“
-    private Chromosome iterBestFit;//å…¨å±€æœ€ä¼˜æŸ“è‰²ä½“
-    private double bestFitness;//ç§ç¾¤æœ€å¤§é€‚åº”åº¦
-    private double worstFitness;//ç§ç¾¤æœ€åé€‚åº”åº¦
+    private Chromosome bestFit; //×îºÃÊÊÓ¦¶È¶ÔÓ¦µÄÈ¾É«Ìå
+    private Chromosome iterBestFit;//È«¾Ö×îÓÅÈ¾É«Ìå
+    private double bestFitness;//ÖÖÈº×î´óÊÊÓ¦¶È
+    private double worstFitness;//ÖÖÈº×î»µÊÊÓ¦¶È
     private double averageFitness;
 
 
@@ -81,7 +82,7 @@ public class GeneticAlgorith {
         this.totalFitness = totalFitness;
     }
 
-    private double totalFitness;//ç§ç¾¤æ€»é€‚åº”åº¦
+    private double totalFitness;//ÖÖÈº×ÜÊÊÓ¦¶È
     private Random random=new Random();
 
     public int sumCharge(){
@@ -102,14 +103,14 @@ public class GeneticAlgorith {
     }
 
 
-    //æ„é€ Gettingæ–¹æ³•
+    //¹¹ÔìGetting·½·¨
 
     public GeneticAlgorith(int popSize){
         this.popSize=popSize;
 
     }
     /*
-    åˆå§‹åŒ–ç§ç¾¤
+    ³õÊ¼»¯ÖÖÈº
      */
     public void init(){
         for(int i=0;i<charge.length;i++){
@@ -120,13 +121,16 @@ public class GeneticAlgorith {
             Chromosome g=new Chromosome(50);
             changeGene(g);
             population.add(g);
+            
+//            changeGene(Exception e);
+//            population.add(e);
         }
         caculteFitness();
 
 
     }
     /*
-    è®¡ç®—ç§ç¾¤é€‚åº”åº¦
+    ¼ÆËãÖÖÈºÊÊÓ¦¶È
      */
     public void caculteFitness(){
 
@@ -151,14 +155,14 @@ public class GeneticAlgorith {
 
         }
         averageFitness = totalFitness / popSize;
-        //å› ä¸ºç²¾åº¦é—®é¢˜å¯¼è‡´çš„å¹³å‡å€¼å¤§äºæœ€å¥½å€¼ï¼Œå°†å¹³å‡å€¼è®¾ç½®æˆæœ€å¥½å€¼
+        //ÒòÎª¾«¶ÈÎÊÌâµ¼ÖÂµÄÆ½¾ùÖµ´óÓÚ×îºÃÖµ£¬½«Æ½¾ùÖµÉèÖÃ³É×îºÃÖµ
         averageFitness = averageFitness > bestFitness ? bestFitness : averageFitness;
 
 
     }
 
     /*
-    è½®ç›˜èµŒé€‰æ‹©ç®—æ³•
+    ÂÖÅÌ¶ÄÑ¡ÔñËã·¨
      */
     public Chromosome getChromoRoulette(){
         double db=random.nextDouble();
@@ -195,7 +199,7 @@ public class GeneticAlgorith {
     }
 
     /*
-    ä¸¤ç‚¹äº¤å‰
+    Á½µã½»²æ
      */
     public static List<Chromosome> genetic(Chromosome p1,Chromosome p2){
         if(p1==null||p2==null){
@@ -216,7 +220,7 @@ public class GeneticAlgorith {
         int max=a>b?a:b;
         if(max-min>15){
             max=min+15;
-        }//æœ€å¤§æ­¥é•¿ä¸º10
+        }//×î´ó²½³¤Îª10
 
         for(int i=min;i<max;i++){
             boolean temp=c1.gene[i];
@@ -233,7 +237,7 @@ public class GeneticAlgorith {
         return listNew;
     }
     /*
-    è´ªå¿ƒå˜æ¢ç®—å­
+    Ì°ĞÄ±ä»»Ëã×Ó
      */
     public void changeGene(Chromosome c){
         int flag=0;
@@ -246,7 +250,6 @@ public class GeneticAlgorith {
             }
         }
         Comparator<Map.Entry<Integer, Double>> valueComparator = new Comparator<Map.Entry<Integer, Double>>() {
-            @Override
             public int compare(Map.Entry<Integer, Double> o1, Map.Entry<Integer, Double> o2) {
                 return o2.getValue().compareTo(o1.getValue());
             }
@@ -264,24 +267,13 @@ public class GeneticAlgorith {
                 //flag=1;
                 c.gene[entry.getKey()]=false;
             }
-
-            /*
-            fitnessNow+=charge[entry.getKey()];
-            weightNow+=weight[entry.getKey()];
-            if(weightNow<=bagMax){
-                c.setFitness(fitnessNow);
-            }
-            else{
-                c.setFitness(0);
-            }
-            */
             c.setFitness(fitnessNow);
             
         }
 
     }
     /*
-    è¿›åŒ–ç®—æ³•
+    ½ø»¯Ëã·¨
      */
     public void evolve() {
         List<Chromosome> childrenGenome = new ArrayList<Chromosome>();
@@ -322,7 +314,6 @@ public class GeneticAlgorith {
             temGen.add(getBestFit());
             childrenGenome.remove(getBestFit());
             setBestFit(null);
-
         }
 
         population = childrenGenome;
@@ -333,22 +324,15 @@ public class GeneticAlgorith {
             temGen.add(tp1);
         }
 
-        /*
-        while (temGen.size()<popSize){
-            Chromosome tp1=new Chromosome(50);
-            temGen.add(tp1);
-        }
-        */
-
         population = temGen;
 
-        //é‡æ–°è®¡ç®—ç§ç¾¤é€‚åº”åº¦
+        //ÖØĞÂ¼ÆËãÖÖÈºÊÊÓ¦¶È
         caculteFitness();
 
 
     }
     /*
-    é—ä¼ ç®—æ³•GAæµç¨‹
+    ÒÅ´«Ëã·¨GAÁ÷³Ì
      */
     public void geneticAlgorithProcess(){
         generation=1;
@@ -356,15 +340,13 @@ public class GeneticAlgorith {
         while(generation<iterNum){
             evolve();
             print();
-
             generation++;
-
         }
     }
 
     public void print(){
-        System.out.println("this is generation "+generation);
-        System.out.println("the best fitness is "+y);
+        System.out.println("ÕâÊÇ "+generation+"´ú");
+        System.out.println("×îºÏÊÊµÄÊÇ "+y);
         System.out.println("-----------------------------------------------");
         if(generation==iterNum-1){
             for(int i=0;i<50;i++){
@@ -379,9 +361,5 @@ public class GeneticAlgorith {
             System.out.println("");
         }
     }
-    
-    long timeEnd = System.currentTimeMillis();
-    
- //   System.out.println("æ€»å…±èŠ±è´¹:   " +(timeEnd - timeStart)/1000+"s");
 
 }
