@@ -39,7 +39,7 @@
 </head>
 <body>
 
-	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed"
@@ -49,14 +49,16 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Project name</a>
+				<a class="navbar-brand" href="#">Tony And Honey</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#"> Settings</a></li>
-					<li><a href="#">Settings</a></li>
-					<li><a href="#">Profile</a></li>
-					<li><a href="#">Help</a></li>
+					<li><a href="#"> <!-- <select>
+				<option value="1990">1990</option>
+				</select> -->散点图
+					</a></li>
+					<li><a href="#">价值，重量比排序</a></li>
+					<li><a href="#">最优解</a></li>
 				</ul>
 				<form class="navbar-form navbar-right">
 					<input type="text" class="form-control" placeholder="Search...">
@@ -76,6 +78,9 @@
 				</ul>
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<ol class="breadcrumb">
+					<li class="active">最优解</li>
+				</ol>
 				<h2 class="page-header">请输入查询数据</h2>
 
 				<div class="row placeholders">
@@ -119,7 +124,7 @@
 			</div>
 		</div>
 
-<%-- 		<%
+		<%-- 		<%
 			// 连接数据库并读取数据
 			DriverManager.registerDriver(new com.mysql.jdbc.Driver());
 			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/soft", "root", "root");
@@ -182,18 +187,18 @@
 				</table>
 			</div>
 		</form> --%>
-		</div>
+	</div>
 
 
 
-		<script src="../bs/js/jquery.min.js"></script>
-		<script>
+	<script src="../bs/js/jquery.min.js"></script>
+	<script>
 			window.jQuery
 					|| document
 							.write('<script src="../bs/assets/js/vendor/jquery.min.js"><\/script>')
 		</script>
-		<script src="../bs/js/bootstrap.min.js"></script>
-		<script src="../bs/assets/js/vendor/holder.min.js"></script>
-		<script src="../bs/assets/js/ie10-viewport-bug-workaround.js"></script>
+	<script src="../bs/js/bootstrap.min.js"></script>
+	<script src="../bs/assets/js/vendor/holder.min.js"></script>
+	<script src="../bs/assets/js/ie10-viewport-bug-workaround.js"></script>
 </body>
 </html>

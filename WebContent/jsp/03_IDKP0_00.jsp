@@ -4,8 +4,9 @@
 <%@page import="java.sql.ResultSet"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
 %>
 <%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%> --%>
@@ -48,7 +49,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 <body>
 
-	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed"
@@ -58,14 +59,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Project name</a>
+				<a class="navbar-brand" href="#">Tony And Honey</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#"> Settings</a></li>
-					<li><a href="#">Settings</a></li>
-					<li><a href="#">Profile</a></li>
-					<li><a href="#">Help</a></li>
+					<li><a href="#"> <!-- <select>
+				<option value="1990">1990</option>
+				</select> -->散点图
+					</a></li>
+					<li><a href="#">价值，重量比排序</a></li>
+					<li><a href="#">最优解</a></li>
 				</ul>
 				<form class="navbar-form navbar-right">
 					<input type="text" class="form-control" placeholder="Search...">
@@ -85,6 +88,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</ul>
 			</div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<ol class="breadcrumb">
+					<li><a href="03_start.jsp">最优解</a></li>
+					<li class="active">选择的具体数据：IDKP0_00</li>
+				</ol>
 				<h2 class="page-header">请输入查询数据</h2>
 
 				<div class="row placeholders">
@@ -113,15 +120,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="btn-group btn-group-justified" role="group"
 					aria-label="...">
 					<ul class="btn-group" role="group">
-						<li class="btn btn-default"><a href="/Dynamic_programmin"
+						<li class="btn btn-default"><a href="03_IDKP0_00_DT.jsp"
 							style="text-decoration: none;">动态规划法</a></li>
 					</ul>
 					<ul class="btn-group" role="group">
-						<li class="btn btn-default"><a href="HSSFTest"
+						<li class="btn btn-default"><a href="03_IDKP0_00_HS.jsp"
 							style="text-decoration: none;">回溯法</a></li>
 					</ul>
 					<ul class="btn-group" role="group">
-						<li class="btn btn-default"><a href="Test"
+						<li class="btn btn-default"><a href="03_IDKP0_00_YC.jsp"
 							style="text-decoration: none;">遗传算法</a></li>
 					</ul>
 				</div>
